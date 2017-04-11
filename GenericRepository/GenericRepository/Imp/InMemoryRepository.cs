@@ -67,7 +67,9 @@ namespace GenericRepository.Imp
         private bool IsEquals(TEntity Obj1, TEntity Obj2)
         {
             var isequals = true;
-
+            var PropertyKey = GetPropertyKey();
+            if (GetPropertyKey().Count == 0)
+                return false;
             foreach (var property in GetPropertyKey())
             {
                 if (!Obj1.GetType().GetProperty(property).GetValue(Obj1).Equals(Obj2.GetType().GetProperty(property).GetValue(Obj2)))
